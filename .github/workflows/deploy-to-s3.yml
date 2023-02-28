@@ -28,6 +28,7 @@ jobs:
         id: bucket_url
         run: echo ::set-output name=url::$(aws s3 presign s3://my-first-buckets-nabeel-tahir/index.html)
       - name: Open app in browser
-        run: | 
+        run: |
           echo "App URL: ${{ steps.bucket_url.outputs.url }}"
-          xdg-open ${{ steps.bucket_url.outputs.url }}
+          if [[ "$OSTYPE" == "darwin"* ]]; then open ${{ steps.bucket_url.outputs.url }}; fi
+          if [[ "$OSTYPE" == "win32"* ]]; then start ${{ steps.bucket_url.outputs.url }}; fi
