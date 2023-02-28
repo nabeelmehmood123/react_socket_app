@@ -9,6 +9,7 @@ function App() {
 
   useEffect(() => {
     socket.on('chat message', (msg) => {
+        console.log("EVENT OCCURED");
       setMessages([...messages, msg]);
     });
   }, [messages]);
