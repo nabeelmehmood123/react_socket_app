@@ -11,9 +11,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: Install Dependencies
-        uses: npm install
+        run: npm install
       - name: Build App
-        uses: npm run build
+        run: npm run build
       - name: Configure AWS Credentails
         uses: aws-actions/configure-aws-credentials@v1
         with:
