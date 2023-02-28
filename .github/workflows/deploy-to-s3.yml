@@ -21,12 +21,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy to S3
-        run: aws s3 sync build/ s3://my-first-bucket-nabeel-tahir
+        run: aws s3 sync build/ s3://my-first-buckets-nabeel-tahir
       - name: Enable Website Hosting
-        run: aws s3 website s3://my-first-bucket-nabeel-tahir --index-document index.html --error-document index.html
+        run: aws s3 website s3://my-first-buckets-nabeel-tahir --index-document index.html --error-document index.html
       - name: Get Bucket URL
         id: bucket_url
-        run: echo ::set-output name=url::$(aws s3 presign s3://my-first-bucket-nabeel-tahir/index.html)
+        run: echo ::set-output name=url::$(aws s3 presign s3://my-first-buckets-nabeel-tahir/index.html)
       - name: Open app in browser
         run: | 
           echo "App URL: ${{ steps.bucket_url.outputs.url }}"
